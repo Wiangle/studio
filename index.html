@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiangle Minecraft Launcher</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: white;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        @keyframes slideUp {
+            0% {
+                opacity: 0;
+                transform: translateY(100px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            opacity: 0;
+            animation: slideUp 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+        }
+
+        .logo {
+            width: 150px;
+            margin-bottom: 20px;
+            animation-delay: 0s;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: black;
+            animation-delay: 0.1s;
+        }
+
+        p {
+            color: black;
+            animation-delay: 0.2s;
+        }
+
+        .features {
+            display: flex;
+            justify-content: space-around;
+            max-width: 800px;
+            margin: 20px auto;
+            gap: 10px;
+        }
+
+        .feature {
+            background-color: rgba(0, 0, 0, 0.1); /* 黑色半透明 */
+            color: black;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 22%;
+            text-align: left;
+            font-size: 1rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* 鼠标悬停效果 */
+        .feature:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature:nth-child(1) { animation-delay: 0.2s; }
+        .feature:nth-child(2) { animation-delay: 0.3s; }
+        .feature:nth-child(3) { animation-delay: 0.4s; }
+        .feature:nth-child(4) { animation-delay: 0.5s; }
+
+        .btn, .switch-lang {
+            padding: 10px 20px;
+            color: black;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* 下载按钮 */
+        .btn {
+            background: linear-gradient(145deg, rgba(255,255,255,0.2), rgba(0,0,0,0.2));
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            margin-top: 30px;
+            animation-delay: 0.6s;
+        }
+
+        /* 鼠标悬停按钮效果 */
+        .btn:hover, .switch-lang:hover {
+            background-color: rgba(0, 0, 0, 0.2);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 切换语言按钮 */
+        .switch-lang {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(145deg, #e0e0e0, #f5f5f5);
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            padding: 10px 25px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            font-size: 1rem;
+            animation-delay: 0.7s;
+        }
+
+        .animate {
+            opacity: 0;
+            animation: slideUp 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+        }
+    </style>
+    <script>
+        function switchLanguage() {
+            const lang = document.documentElement.lang;
+            if (lang === "zh") {
+                document.documentElement.lang = "en";
+                document.querySelector('h1').textContent = "Wiangle Minecraft Launcher";
+                document.querySelector('p').textContent = "Wiangle Minecraft Launcher is a powerful, user-friendly launcher for Minecraft, offering the best gaming experience for players.";
+                const features = document.querySelectorAll('.feature');
+                features[0].textContent = "Intuitive interface design allows you to easily manage game versions and mods.";
+                features[1].textContent = "Supports multiple Minecraft versions and mod loaders, meeting the needs of different players.";
+                features[2].textContent = "Built-in mod management system makes it easy to install, update, and manage your favorite mods.";
+                features[3].textContent = "Provides performance optimization options to make your Minecraft run smoother.";
+                document.querySelector('.btn').textContent = "Download Wiangle Minecraft Launcher";
+                document.querySelector('.switch-lang').textContent = "Switch Language / 切换语言";
+            } else {
+                document.documentElement.lang = "zh";
+                document.querySelector('h1').textContent = "Wiangle Minecraft启动器";
+                document.querySelector('p').textContent = "Wiangle Minecraft启动器是一款功能强大，用户友好的Minecraft启动器，为玩家提供最佳的游戏体验。";
+                const features = document.querySelectorAll('.feature');
+                features[0].textContent = "直观易用的界面设计，让您轻松管理游戏版本和模组。";
+                features[1].textContent = "支持多个Minecraft版本和模组加载器，满足不同玩家的需求。";
+                features[2].textContent = "内置模组管理系统，轻松安装、更新和管理您喜爱的模组。";
+                features[3].textContent = "提供游戏性能优化选项，让您的Minecraft运行更加流畅。";
+                document.querySelector('.btn').textContent = "下载Wiangle Minecraft启动器";
+                document.querySelector('.switch-lang').textContent = "切换语言 / Switch Language";
+            }
+        }
+    </script>
+</head>
+<body>
+    <button class="switch-lang animate" onclick="switchLanguage()">切换语言 / Switch Language</button>
+    <div class="container">
+        <img src="logo.png" alt="Wiangle Logo" class="logo animate">
+        <h1 class="animate">Wiangle Minecraft启动器</h1>
+        <p class="animate">Wiangle Minecraft启动器是一款功能强大，用户友好的Minecraft启动器，为玩家提供最佳的游戏体验。</p>
+        <div class="features">
+            <div class="feature animate">直观易用的界面设计，让您轻松管理游戏版本和模组。</div>
+            <div class="feature animate">支持多个Minecraft版本和模组加载器，满足不同玩家的需求。</div>
+            <div class="feature animate">内置模组管理系统，轻松安装、更新和管理您喜爱的模组。</div>
+            <div class="feature animate">提供游戏性能优化选项，让您的Minecraft运行更加流畅。</div>
+        </div>
+        <button class="btn animate">下载Wiangle Minecraft启动器</button>
+    </div>
+</body>
+</html>
